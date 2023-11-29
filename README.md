@@ -72,4 +72,40 @@ The rotation of targets introduces a dynamic aspect to the navigation task, requ
 
 By navigating towards these targets and learning from its experiences, the self-driving car aims to optimize its policy for effective and efficient navigation in the simulated environment.
 
+## Simulation
 Video simulation of the program can be found [here](https://www.youtube.com/watch?v=gXsBGyxNsag) in youtube.
+
+## Observations
+
+### Reducing Temeperature
+When the temperature is reduced in the context of a softmax function, it affects the way probabilities are assigned to different actions. The softmax function is often used in reinforcement learning to convert raw action values (Q-values) into a probability distribution over actions. The temperature parameter, denoted as T, controls the "softness" or smoothness of this distribution.
+
+- Reduced Exploration: Lowering the temperature reduces the influence of lower Q-values, making it less likely for suboptimal actions to be chosen. This can limit the agent's exploration of alternative actions.
+- More Exploitation: With a lower temperature, the agent is more likely to exploit its current knowledge and consistently choose actions with higher Q-values.
+- Risk of Overfitting: Setting the temperature too low might lead to the agent becoming too deterministic and potentially overfitting to the current state of the environment, missing out on valuable exploration.
+
+Reducing the temperature in softmax makes the agent more focused on exploiting its current knowledge, potentially at the cost of reduced exploration.
+
+### Reducing Gamma (γ)
+
+The discount factor γ in reinforcement learning determines the importance of future rewards in the agent's decision-making process. Reducing γ has several effects on the agent's behavior and the learning process:
+
+- Short-Term Focus:A lower γ places more emphasis on immediate rewards and less on future rewards. The agent becomes more focused on obtaining quick rewards and is less concerned with the long-term consequences of its actions.
+
+- Impulsivity: A smaller γ makes the agent more impulsive, as it is less willing to wait for delayed rewards. It tends to favor actions that yield immediate positive outcomes.
+
+- Faster Learning in Short-Term: Lowering γ can lead to faster learning in the short term, as the agent adapts quickly to the local structure of the environment. However, this might come at the cost of potentially missing out on optimal long-term strategies.
+
+- Limited Exploration: With a low γ, the agent may become myopic and exploit its current knowledge without sufficiently exploring alternative actions. This can be a limitation in environments where delayed consequences are crucial for making optimal decisions.
+
+### Weak boundary signals
+
+- Agent's Decision-Making: If the "boundary-signal" is weak compared to the last reward, the agent may give more weight to the last reward in its decision-making process. The agent is likely to prioritize actions that led to the most recent positive or negative outcome, as it perceives this as more influential.
+
+- Temporal Considerations: The weakness of the "boundary-signal" relative to the last reward could result in the agent placing less importance on spatial or boundary-related information and more emphasis on the temporal aspects of the environment. The agent may become more myopic, focusing on short-term gains.
+
+- Risk of Ignoring Environmental Boundaries: If the "boundary-signal" is weak, the agent might be less sensitive to environmental boundaries or constraints. It may not give sufficient consideration to avoiding collisions or staying within specific regions of the environment.
+
+- Exploration Challenges: Weak boundary signals may impact the agent's ability to explore different regions of the environment, especially if these signals are essential for guiding the agent away from unsafe or unproductive areas.
+
+- Learning Bias: The agent may develop a learning bias towards actions that lead to immediate rewards, potentially overlooking actions that contribute to long-term success or adherence to environmental constraints.
